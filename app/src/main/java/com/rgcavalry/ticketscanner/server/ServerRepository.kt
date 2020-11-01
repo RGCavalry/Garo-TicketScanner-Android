@@ -4,7 +4,7 @@ import com.rgcavalry.ticketscanner.persistence.DataStorage
 import com.rgcavalry.ticketscanner.server.models.Cinema
 import com.rgcavalry.ticketscanner.server.models.Session
 import com.rgcavalry.ticketscanner.server.models.UserLoginRequest
-import com.rgcavalry.ticketscanner.utils.extensions.dateTimeToMillis
+import com.rgcavalry.ticketscanner.utils.extensions.toClientTime
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.zip
@@ -62,7 +62,7 @@ class ServerRepository(
             sessionsResponse.sessions.map { serverSession ->
                 Session(
                     serverSession.id,
-                    serverSession.startTime.dateTimeToMillis(),
+                    serverSession.startTime.toClientTime(),
                     filmsResponse.films.find { it.id == serverSession.movieId }!!,
                     serverApi.getTicketList(cookie, serverSession.id).tickets ?: emptyList()
                 )

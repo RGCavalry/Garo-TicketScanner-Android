@@ -20,6 +20,7 @@ class App : Application() {
                 serverModule,
                 persistenceModule,
                 viewModelsModule,
+                recyclerAdaptersModule,
             )
         }
     }
