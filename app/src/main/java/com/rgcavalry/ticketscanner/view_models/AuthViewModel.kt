@@ -1,6 +1,7 @@
 package com.rgcavalry.ticketscanner.view_models
 
 import android.app.Application
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -28,6 +29,9 @@ class AuthViewModel(
     var password = ""
     val passwordError = ObservableField("")
 
+    var selectedCinemaAddress = ""
+    var selectedHallNumber = 1
+
     private val _cinemaListResource = SingleLiveEvent<Resource<List<Cinema>>>()
     val cinemaListResource: LiveData<Resource<List<Cinema>>> = _cinemaListResource
 
@@ -49,7 +53,7 @@ class AuthViewModel(
             viewModelScope.launch {
                 _loginResource.value = Resource.loading()
                 val response = withContext(Dispatchers.IO) {
-                    serverRepo.login(email, password)
+                    serverRepo.login(email, password, getSelectedCinemaId(), selectedHallNumber)
                 }
                 _loginResource.value = response
             }
@@ -66,4 +70,8 @@ class AuthViewModel(
         }
         return result
     }
+
+    private fun getSelectedCinemaId() = cinemaListResource.value!!.data!!.find {
+        it.address == selectedCinemaAddress
+    }!!.id
 }

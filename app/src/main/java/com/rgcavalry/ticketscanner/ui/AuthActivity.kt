@@ -26,6 +26,7 @@ class AuthActivity : AppCompatActivity() {
         )
         binding.viewModel = viewModel
         setObservers()
+        setHallListener()
     }
 
     private fun setObservers() {
@@ -55,6 +56,18 @@ class AuthActivity : AppCompatActivity() {
                     cinemaList.map { it.address }
                 )
             )
+        }
+    }
+
+    private fun setHallListener() {
+        hallGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            if (isChecked) {
+                when(checkedId) {
+                    R.id.hall1Btn -> viewModel.selectedHallNumber = 1
+                    R.id.hall2Btn -> viewModel.selectedHallNumber = 2
+                    R.id.hall3Btn -> viewModel.selectedHallNumber = 3
+                }
+            }
         }
     }
 }
