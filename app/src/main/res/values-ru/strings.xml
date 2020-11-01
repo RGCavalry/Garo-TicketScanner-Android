@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="permission_denied_camera">Вам нужно разрешить доступ к камере для использования сканера</string>
+    <string name="logo">Логотип Garo</string>
+    <string name="login_hint">Логин</string>
+    <string name="password_hint">Пароль</string>
+    <string name="cinema_hint">Кинотеатр</string>
+    <string name="hall_1">Зал 1</string>
+    <string name="hall_2">Зал 2</string>
+    <string name="hall_3">Зал 3</string>
+    <string name="login">Войти</string>
+    <string name="wrong_email_error">Введите правильную почту</string>
 </resources>

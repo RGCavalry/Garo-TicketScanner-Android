@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name" translatable="false">Ticket Scanner</string>
     <string name="permission_denied_camera">You need to allow access to the camera to use the scanner</string>
+    <string name="logo">Garo\'s logo</string>
+    <string name="login_hint">Login</string>
+    <string name="password_hint">Password</string>
+    <string name="cinema_hint">Cinema</string>
+    <string name="hall_1">Hall 1</string>
+    <string name="hall_2">Hall 2</string>
+    <string name="hall_3">Hall 3</string>
+    <string name="login">Login</string>
+    <string name="wrong_email_error">Enter correct email</string>
 </resources>

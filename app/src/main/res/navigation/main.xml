@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/sessionListFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.rgcavalry.ticketscanner.ui.fragments.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/scannerFragment"
+        android:name="com.rgcavalry.ticketscanner.ui.fragments.ScannerFragment"
+        android:label="ScannerFragment"
+        tools:layout="@layout/fragment_scanner" >
+        <action
+            android:id="@+id/action_scannerFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sessionFragment"
+        android:name="com.rgcavalry.ticketscanner.ui.fragments.SessionFragment"
+        android:label="SessionFragment"
+        tools:layout="@layout/fragment_session" >
+        <action
+            android:id="@+id/action_sessionFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+        <action
+            android:id="@+id/action_sessionFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sessionListFragment"
+        android:name="com.rgcavalry.ticketscanner.ui.fragments.SessionListFragment"
+        android:label="SessionListFragment"
+        tools:layout="@layout/fragment_session_list" >
+        <action
+            android:id="@+id/action_sessionListFragment_to_sessionFragment"
+            app:destination="@id/sessionFragment" />
+        <action
+            android:id="@+id/action_sessionListFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+        <action
+            android:id="@+id/action_sessionListFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+</navigation>
