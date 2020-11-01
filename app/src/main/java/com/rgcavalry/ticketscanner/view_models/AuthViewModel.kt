@@ -1,7 +1,6 @@
 package com.rgcavalry.ticketscanner.view_models
 
 import android.app.Application
-import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData

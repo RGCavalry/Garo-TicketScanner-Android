@@ -13,5 +13,9 @@ val viewModelsModule = module {
             serverRepo = get(),
         )
     }
-    viewModel { MainViewModel() }
+    viewModel {
+        MainViewModel(
+            serverRepo = get()
+        )
+    }
 }

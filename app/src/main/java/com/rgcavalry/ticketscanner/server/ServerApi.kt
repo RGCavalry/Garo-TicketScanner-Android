@@ -17,30 +17,18 @@ interface ServerApi {
     @GET("cinemas")
     suspend fun getCinemasList(): CinemaListResponse
 
-    @GET("cinemasession/{cinemaId}")
+    @GET("cinemasession/{cinemaId}/{hallId}")
     suspend fun getSessionList(
-        @Path("cinemaId") cinemaId: Int
-    ): SessionListResponse
-
-    @GET("admin/cinemasession/{cinemaId}/{hallId}/tickets")
-    suspend fun getTicketList(
-        @Header("Cookie") cookie: String,
         @Path("cinemaId") cinemaId: Int,
         @Path("hallId") hallId: Int
+    ): SessionListResponse
+
+    @GET("admin/cinemasession/{sessionId}/tickets_mobile")
+    suspend fun getTicketList(
+        @Header("Cookie") cookie: String,
+        @Path("sessionId") sessionId: Int
     ): TicketListResponse
 
     @GET("films")
     suspend fun getFilms(): FilmListResponse
-
-    @GET("cinemasession/{cinemaID}/{hallID}/places")
-    suspend fun getPlaces(
-        @Path("cinemaId") cinemaId: Int,
-        @Path("hallId") hallId: Int
-    ): PlaceListResponse
-
-    @GET("admin/user/{userId}")
-    suspend fun getUser(
-        @Header("Cookie") cookie: String,
-        @Path("userId") userId: Int
-    ): User
 }

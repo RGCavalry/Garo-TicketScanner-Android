@@ -1,5 +1,6 @@
 package com.rgcavalry.ticketscanner.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -39,7 +40,7 @@ class AuthActivity : AppCompatActivity() {
         }
         viewModel.loginResource.observe(this) {
             when(it.status) {
-                Status.SUCCESS -> this.showLongToast(it.data.toString())
+                Status.SUCCESS -> navigateToMainActivity()
                 Status.ERROR -> this.showShortToast(it.message.toString())
                 Status.LOADING -> {}
             }
@@ -60,14 +61,19 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun setHallListener() {
-        hallGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
+        hallGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
-                when(checkedId) {
-                    R.id.hall1Btn -> viewModel.selectedHallNumber = 1
-                    R.id.hall2Btn -> viewModel.selectedHallNumber = 2
-                    R.id.hall3Btn -> viewModel.selectedHallNumber = 3
+                viewModel.selectedHallNumber = when(checkedId) {
+                    R.id.hall3Btn -> 3
+                    R.id.hall2Btn -> 2
+                    else -> 1
                 }
             }
         }
+    }
+
+    private fun navigateToMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }
