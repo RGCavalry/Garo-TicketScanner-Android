@@ -60,4 +60,12 @@ class DataStorage(
     }
 
     fun getCheckedTicketList() = prefs.getStringSet(CHECKED_TICKET_LIST_KEY, emptySet())
+
+    fun clearData() {
+        val checkedTickets = getCheckedTicketList()
+        prefs.edit {
+            clear()
+            putStringSet(CHECKED_TICKET_LIST_KEY, checkedTickets)
+        }
+    }
 }

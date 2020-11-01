@@ -108,5 +108,9 @@ class ProfileFragment : Fragment() {
             dataStorage.saveSelectedCinema(dataStorage.cinemaList[index].id)
             viewModel.loadSessions()
         }
+        logoutBtn.setOnClickListener {
+            dataStorage.clearData()
+            requireActivity().recreate()
+        }
     }
 }
