@@ -13,4 +13,10 @@
     <string name="code_scanner_content_desc">Открыть сканер QR кодов</string>
     <string name="scanner_holder">Отсканировано: %1$d/%2$d</string>
     <string name="sessions">Сеансы</string>
+    <string name="fill_entry_field_error">Заполните поле</string>
+    <string name="open_profile">Открыть профиль</string>
+    <string name="session_time_holder">Сеанс %1$s</string>
+    <string name="logout">Выйти</string>
+    <string name="profile">Профиль</string>
+    <string name="empty_sessions_notify">Сегодня нет сеансов</string>
 </resources>

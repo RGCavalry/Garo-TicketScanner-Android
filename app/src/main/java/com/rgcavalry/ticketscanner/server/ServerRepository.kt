@@ -4,7 +4,7 @@ import com.rgcavalry.ticketscanner.persistence.DataStorage
 import com.rgcavalry.ticketscanner.server.models.Cinema
 import com.rgcavalry.ticketscanner.server.models.Session
 import com.rgcavalry.ticketscanner.server.models.UserLoginRequest
-import com.rgcavalry.ticketscanner.utils.extensions.toClientTime
+import com.rgcavalry.ticketscanner.utils.extensions.toMillisTime
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.zip
@@ -59,14 +59,14 @@ class ServerRepository(
         val filmsFlow = flowOf(serverApi.getFilms())
 
         val result = sessionsFlow.zip(filmsFlow) { sessionsResponse, filmsResponse ->
-            sessionsResponse.sessions.map { serverSession ->
+            (sessionsResponse.sessions ?: emptyList()).map { serverSession ->
                 Session(
                     serverSession.id,
-                    serverSession.startTime.toClientTime(),
+                    serverSession.startTime.toMillisTime(),
                     filmsResponse.films.find { it.id == serverSession.movieId }!!,
                     serverApi.getTicketList(cookie, serverSession.id).tickets ?: emptyList()
                 )
-            }.filter { it.tickets.isNotEmpty() }
+            }.filter { it.tickets.isNotEmpty()/* && it.startTime.isMillisToday()*/ }.sortedBy { it.startTime }
         }.first()
         responseHandler.handleSuccess(result)
     } catch (e: Exception) {

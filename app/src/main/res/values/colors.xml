@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00C2FF</color>
     <color name="colorAccent">#00C2FF</color>
     <color name="colorBackground">#121212</color>
+    <color name="colorSeparator">#26FFFFFF</color>
+    <color name="destructiveColor">#FF6262</color>
 </resources>

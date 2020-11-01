@@ -1,4 +1,4 @@
-package com.rgcavalry.ticketscanner.utils
+package com.rgcavalry.ticketscanner.utils.extensions
 
 import android.util.Log
 import androidx.annotation.MainThread

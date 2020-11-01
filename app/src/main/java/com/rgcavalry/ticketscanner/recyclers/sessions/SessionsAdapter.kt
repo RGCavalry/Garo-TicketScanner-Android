@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rgcavalry.ticketscanner.R
 import com.rgcavalry.ticketscanner.server.models.Session
+import com.rgcavalry.ticketscanner.utils.extensions.millisToTime
 import kotlinx.android.synthetic.main.view_session_card.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -65,7 +66,7 @@ class SessionsAdapter(
             val checkedTicketsNumber = session.tickets.count { it.checked }
             val ticketsNumber = session.tickets.size
 
-            timeTV.text = session.startTime
+            timeTV.text = session.startTime.millisToTime()
             titleAndAgeRatingTV.text = context.getString(
                 R.string.title_age_holder,
                 session.film.name,

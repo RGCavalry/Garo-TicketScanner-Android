@@ -10,7 +10,7 @@ import com.rgcavalry.ticketscanner.server.Resource
 import com.rgcavalry.ticketscanner.server.ServerRepository
 import com.rgcavalry.ticketscanner.server.models.Cinema
 import com.rgcavalry.ticketscanner.server.models.User
-import com.rgcavalry.ticketscanner.utils.SingleLiveEvent
+import com.rgcavalry.ticketscanner.utils.extensions.SingleLiveEvent
 import com.rgcavalry.ticketscanner.utils.extensions.getAppContext
 import com.rgcavalry.ticketscanner.utils.extensions.isNotEmail
 import kotlinx.coroutines.Dispatchers
@@ -66,6 +66,12 @@ class AuthViewModel(
             result = false
         } else {
             emailError.set("")
+        }
+        if (password.isBlank()) {
+            passwordError.set(getAppContext().getString(R.string.fill_entry_field_error))
+            result = false
+        } else {
+            passwordError.set("")
         }
         return result
     }
