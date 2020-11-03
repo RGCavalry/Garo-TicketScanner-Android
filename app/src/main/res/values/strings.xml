@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Ticket Scanner</string>
+    <string name="app_name" translatable="false">Garo Scanner</string>
     <string name="permission_denied_camera">You need to allow access to the camera to use the scanner</string>
     <string name="logo">Garo\'s logo</string>
     <string name="login_hint">Login</string>
