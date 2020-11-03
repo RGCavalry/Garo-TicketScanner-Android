@@ -81,6 +81,6 @@ class SessionFragment : Fragment() {
     }
 
     private fun navigateToScanner() = findNavController().navigate(
-        R.id.action_sessionListFragment_to_scannerFragment
+        R.id.action_sessionFragment_to_scannerFragment
     )
 }

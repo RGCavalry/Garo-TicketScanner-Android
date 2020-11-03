@@ -10,132 +10,138 @@
             type="com.rgcavalry.ticketscanner.view_models.AuthViewModel" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.AuthActivity"
-        android:layout_marginHorizontal="16dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_logo_vector"
-            android:contentDescription="@string/logo"
-            android:layout_marginTop="48dp"/>
+            android:orientation="vertical"
+            tools:context=".ui.AuthActivity"
+            android:layout_marginHorizontal="16dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailInput"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/login_hint"
-            app:handleErrorFrom="@{viewModel.emailError}"
-            android:layout_marginTop="48dp">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="email"
-                android:inputType="textEmailAddress"
-                android:text="@={viewModel.email}" />
-        </com.google.android.material.textfield.TextInputLayout>
+                app:srcCompat="@drawable/ic_logo_vector"
+                android:contentDescription="@string/logo"
+                android:layout_marginTop="48dp"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordInput"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password_hint"
-            app:handleErrorFrom="@{viewModel.passwordError}"
-            android:layout_marginTop="16dp">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailInput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="password"
-                android:inputType="textPassword"
-                android:text="@={viewModel.password}" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="@string/login_hint"
+                app:handleErrorFrom="@{viewModel.emailError}"
+                android:layout_marginTop="48dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/cinemaInput"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/cinema_hint"
-            android:layout_marginTop="16dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="email"
+                    android:inputType="textEmailAddress"
+                    android:text="@={viewModel.email}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <AutoCompleteTextView
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordInput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                android:text="@={viewModel.selectedCinemaAddress}"/>
+                android:hint="@string/password_hint"
+                app:handleErrorFrom="@{viewModel.passwordError}"
+                android:layout_marginTop="16dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="password"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.password}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cinemaInput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/cinema_hint"
+                android:layout_marginTop="16dp">
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/hallGroup"
-                android:layout_width="wrap_content"
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="@={viewModel.selectedCinemaAddress}"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                app:singleSelection="true"
-                app:selectionRequired="true"
-                app:checkedButton="@id/hall1Btn">
+                android:layout_marginVertical="16dp">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/hall1Btn"
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/hallGroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hall_1"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:minHeight="36dp"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                    android:orientation="horizontal"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    app:singleSelection="true"
+                    app:selectionRequired="true"
+                    app:checkedButton="@id/hall1Btn">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/hall2Btn"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/hall1Btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hall_1"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:minHeight="36dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/hall2Btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hall_2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:minHeight="36dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/hall3Btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hall_3"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:minHeight="36dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <Button
+                    android:id="@+id/loginBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hall_2"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:minHeight="36dp"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:onClick="@{(view) -> viewModel.login()}"
+                    android:text="@string/login"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/hall3Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hall_3"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:minHeight="36dp"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+            </RelativeLayout>
 
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </LinearLayout>
 
-            <Button
-                android:id="@+id/loginBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:onClick="@{(view) -> viewModel.login()}"
-                android:text="@string/login"/>
-
-        </RelativeLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </layout>

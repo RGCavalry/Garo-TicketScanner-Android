@@ -20,4 +20,8 @@
     <string name="profile">Профиль</string>
     <string name="empty_sessions_notify">Сегодня нет сеансов</string>
     <string name="session_title_holder">Сеанс %1$s</string>
+    <string name="incorrect_ticket">Такого билета нет</string>
+    <string name="correct_ticket">Билет успешно отсканирован</string>
+    <string name="scanner">Сканер</string>
+    <string name="ticket_info_holder">Имя: %1$s \nМесто: %2$s</string>
 </resources>

@@ -22,4 +22,8 @@
     <string name="full_name_holder" translatable="false">%1$s %2$s</string>
     <string name="empty_sessions_notify">No sessions today</string>
     <string name="session_title_holder">Session %1$s</string>
+    <string name="incorrect_ticket">There is no such ticket</string>
+    <string name="correct_ticket">Ticket scanned successfully</string>
+    <string name="scanner">Scanner</string>
+    <string name="ticket_info_holder">Name: %1$s \nPlace: %2$s</string>
 </resources>

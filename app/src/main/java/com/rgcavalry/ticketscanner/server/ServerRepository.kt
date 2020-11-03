@@ -1,5 +1,6 @@
 package com.rgcavalry.ticketscanner.server
 
+import android.util.Log
 import com.rgcavalry.ticketscanner.persistence.DataStorage
 import com.rgcavalry.ticketscanner.server.models.Cinema
 import com.rgcavalry.ticketscanner.server.models.Session
@@ -51,11 +52,12 @@ class ServerRepository(
     }
 
     suspend fun getSessions() = try {
+        Log.i("Cookie", dataStorage.getCookie())
         val cookie = dataStorage.getCookie()
         val cinemaId = dataStorage.getSelectedCinema()
-        val hallId = dataStorage.getSelectedHall()
+        val hallNumber = dataStorage.getSelectedHall()
 
-        val sessionsFlow = flowOf(serverApi.getSessionList(cinemaId, hallId))
+        val sessionsFlow = flowOf(serverApi.getSessionList(cinemaId, hallNumber))
         val filmsFlow = flowOf(serverApi.getFilms())
 
         val result = sessionsFlow.zip(filmsFlow) { sessionsResponse, filmsResponse ->
@@ -72,6 +74,21 @@ class ServerRepository(
             }.filter { it.tickets.isNotEmpty()/* && it.startTime.isMillisToday()*/ }.sortedBy { it.startTime }
         }.first()
         responseHandler.handleSuccess(result)
+    } catch (e: Exception) {
+        responseHandler.handleException(e)
+    }
+
+    suspend fun checkTicket(ticketHash: String) = try {
+        val ticket = serverApi.checkTicket(
+            dataStorage.getCookie(),
+            ticketHash
+        )
+        dataStorage.saveCheckedTicketList(
+            dataStorage.getCheckedTicketList().toMutableList().apply {
+                add(ticket.id)
+            }.toList()
+        )
+        responseHandler.handleSuccess(ticket)
     } catch (e: Exception) {
         responseHandler.handleException(e)
     }

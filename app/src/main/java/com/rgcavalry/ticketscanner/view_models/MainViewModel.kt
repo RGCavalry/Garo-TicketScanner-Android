@@ -5,8 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rgcavalry.ticketscanner.server.Resource
 import com.rgcavalry.ticketscanner.server.ServerRepository
+import com.rgcavalry.ticketscanner.server.Status
 import com.rgcavalry.ticketscanner.server.models.Cinema
 import com.rgcavalry.ticketscanner.server.models.Session
+import com.rgcavalry.ticketscanner.server.models.Ticket
 import com.rgcavalry.ticketscanner.utils.extensions.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,4 +49,27 @@ class MainViewModel(
     fun getSelectedSession() = sessionsListResource.value!!.data!!.find {
         it.id == selectedSessionId
     }!!
+
+    private val _checkedTicketResource = SingleLiveEvent<Resource<Ticket>>()
+    val checkedTicketResource: LiveData<Resource<Ticket>> = _checkedTicketResource
+
+    fun checkTicket(ticketHash: String) {
+        viewModelScope.launch {
+            _checkedTicketResource.value = Resource.loading()
+            val response = withContext(Dispatchers.IO) {
+                serverRepo.checkTicket(ticketHash)
+            }
+
+            if (response.status == Status.SUCCESS) {
+                val checkedTicket = response.data!!
+                sessionsListResource.value?.data?.find {
+                    it.tickets.contains(checkedTicket)
+                }?.tickets?.find {
+                    it.id == checkedTicket.id
+                }?.checked = true
+            }
+
+            _checkedTicketResource.value = response
+        }
+    }
 }

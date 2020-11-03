@@ -43,7 +43,7 @@ class TicketsAdapter : RecyclerView.Adapter<TicketsAdapter.TicketHolder>() {
 
         fun bind(position: Int) {
             val ticket = ticketList[position]
-            fullNameTV.text = ticket.visitorFullName ?: "Anonim"
+            fullNameTV.text = ticket.visitorFullName ?: "Аноним"
             placeTV.text = ticket.placeNumber
             indicatorIV.isVisible = ticket.checked
         }

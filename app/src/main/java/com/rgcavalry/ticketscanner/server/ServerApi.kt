@@ -17,10 +17,10 @@ interface ServerApi {
     @GET("cinemas")
     suspend fun getCinemasList(): CinemaListResponse
 
-    @GET("cinemasession/{cinemaId}/{hallId}")
+    @GET("cinemasession/{cinemaId}/{hallNumber}")
     suspend fun getSessionList(
         @Path("cinemaId") cinemaId: Int,
-        @Path("hallId") hallId: Int
+        @Path("hallNumber") hallNumber: Int
     ): SessionListResponse
 
     @GET("admin/cinemasession/{sessionId}/tickets_mobile")
@@ -31,4 +31,10 @@ interface ServerApi {
 
     @GET("films")
     suspend fun getFilms(): FilmListResponse
+
+    @GET("admin/ticketinfo/{ticketHash}")
+    suspend fun checkTicket(
+        @Header("Cookie") cookie: String,
+        @Path("ticketHash") ticketHash: String
+    ): Ticket
 }
