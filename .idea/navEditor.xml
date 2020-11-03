@@ -13,8 +13,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-123" />
-                            <option name="y" value="249" />
+                            <option name="x" value="259" />
+                            <option name="y" value="-36" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -25,18 +25,9 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-67" />
-                            <option name="y" value="674" />
+                            <option name="x" value="500" />
+                            <option name="y" value="232" />
                           </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_scannerFragment_to_profileFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -46,17 +37,12 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="108" />
-                            <option name="y" value="-95" />
+                            <option name="x" value="256" />
+                            <option name="y" value="369" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_sessionFragment_to_profileFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_sessionFragment_to_scannerFragment">
                               <value>
                                 <LayoutPositions />
@@ -72,8 +58,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-592" />
-                            <option name="y" value="-15" />
+                            <option name="x" value="12" />
+                            <option name="y" value="76" />
                           </Point>
                         </option>
                         <option name="myPositions">

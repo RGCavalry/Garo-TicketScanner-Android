@@ -59,12 +59,15 @@ class ServerRepository(
         val filmsFlow = flowOf(serverApi.getFilms())
 
         val result = sessionsFlow.zip(filmsFlow) { sessionsResponse, filmsResponse ->
+            val checkedTickets = dataStorage.getCheckedTicketList()
             (sessionsResponse.sessions ?: emptyList()).map { serverSession ->
+                val tickets = serverApi.getTicketList(cookie, serverSession.id).tickets ?: emptyList()
+                tickets.forEach { it.checked = checkedTickets.contains(it.id) }
                 Session(
                     serverSession.id,
                     serverSession.startTime.toMillisTime(),
                     filmsResponse.films.find { it.id == serverSession.movieId }!!,
-                    serverApi.getTicketList(cookie, serverSession.id).tickets ?: emptyList()
+                    tickets
                 )
             }.filter { it.tickets.isNotEmpty()/* && it.startTime.isMillisToday()*/ }.sortedBy { it.startTime }
         }.first()

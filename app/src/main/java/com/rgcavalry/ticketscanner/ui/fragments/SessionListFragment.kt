@@ -72,11 +72,11 @@ class SessionListFragment : Fragment() {
 
     private fun setListeners() {
         recyclerAdapter?.setOnSessionClickListener {
-            navigateToSession(it)
+            viewModel.selectedSessionId = it.id
+            navigateToSession()
         }
-        swipeContainer.setOnRefreshListener {
-            viewModel.loadSessions()
-        }
+        swipeContainer.setOnRefreshListener { viewModel.loadSessions() }
+        scannerBtn.setOnClickListener { navigateToScanner() }
     }
 
     private fun updateSessions(sessionsResource: Resource<List<Session>>) {
@@ -95,11 +95,15 @@ class SessionListFragment : Fragment() {
         }
     }
 
-    private fun navigateToSession(session: Session) {
-        requireContext().showShortToast(session.film.name)
-    }
+    private fun navigateToSession() = findNavController().navigate(
+        R.id.action_sessionListFragment_to_sessionFragment
+    )
 
     private fun navigateToProfile() = findNavController().navigate(
         R.id.action_sessionListFragment_to_profileFragment
+    )
+
+    private fun navigateToScanner() = findNavController().navigate(
+        R.id.action_sessionListFragment_to_scannerFragment
     )
 }

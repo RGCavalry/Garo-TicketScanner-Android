@@ -59,13 +59,12 @@ class DataStorage(
         putStringSet(CHECKED_TICKET_LIST_KEY, ticketIdList.map { it.toString() }.toSet())
     }
 
-    fun getCheckedTicketList() = prefs.getStringSet(CHECKED_TICKET_LIST_KEY, emptySet())
+    fun getCheckedTicketList() = prefs.getStringSet(CHECKED_TICKET_LIST_KEY, emptySet())!!
+        .toList().map { it.toInt() }
 
     fun clearData() {
         val checkedTickets = getCheckedTicketList()
-        prefs.edit {
-            clear()
-            putStringSet(CHECKED_TICKET_LIST_KEY, checkedTickets)
-        }
+        prefs.edit(commit = true) { clear() }
+        saveCheckedTicketList(checkedTickets)
     }
 }

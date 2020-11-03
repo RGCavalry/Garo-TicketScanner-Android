@@ -41,4 +41,10 @@ class MainViewModel(
             _sessionsListResource.value = response
         }
     }
+
+    var selectedSessionId = -1
+
+    fun getSelectedSession() = sessionsListResource.value!!.data!!.find {
+        it.id == selectedSessionId
+    }!!
 }

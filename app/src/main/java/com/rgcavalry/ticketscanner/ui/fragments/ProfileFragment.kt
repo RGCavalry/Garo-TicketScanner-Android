@@ -63,8 +63,8 @@ class ProfileFragment : Fragment() {
         val user = dataStorage.getUser()!!
         fullNameHolder.text = getString(
             R.string.full_name_holder,
-            user.firstName,
-            user.lastName
+            user.firstName ?: "Anonim",
+            user.lastName ?: "Anonimov"
         )
         emailHolder.text = user.email
 
