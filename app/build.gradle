@@ -47,7 +47,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.fragment:fragment-ktx:1.3.0-beta01'
     implementation 'com.google.android.material:material:1.2.1'
@@ -83,10 +82,6 @@ dependencies {
     def retrofit_version = "2.6.2"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
-    // Progress buttons
-    def progress_buttons_version = "2.1.0"
-    implementation "com.github.razir.progressbutton:progressbutton:$progress_buttons_version"
 
     // Data Binding
     def binding_version = "3.1.4"
